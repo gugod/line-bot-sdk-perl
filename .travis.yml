@@ -15,9 +15,9 @@ perl:
   - 5.14
 
 script:
-  prove -lrv t/
+  prove -j 2 -lrv t/
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers; source ~/travis-perl-helpers/init; build-perl; fi
   - perl -V
-  - cpanm --notest Test::More~0.98
+  - cpanm -q --notest Test::More~0.98
